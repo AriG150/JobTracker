@@ -1,5 +1,24 @@
 const mongoose = require('mongoose');
 
+
+const offerSchema = new mongoose.Schema({
+  contaced: { type: Boolean, default: false },
+  rejected: { type: Boolean, default: false },
+  offer: { type: Boolean, default: false },
+  counter: { type: Boolean, default: false },
+  accept: { type: Boolean, default: false },
+  application_id: mongoose.Schema.Types.ObjectId
+})
+
+
+
+const noteSchema = new mongoose.Schema({
+  rec_convo: String,
+  info_convo: String,
+  notes: String,
+  applicationId: mongoose.Schema.Types.ObjectId
+})
+
 const applicationSchema = new mongoose.Schema({
   name: String,
   company: String,

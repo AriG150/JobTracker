@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(helmet());
 
 
-mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection; 
 db.once('open', () => {
   console.log(` 💫 Connected to MongoDB on ${db.host}: ${db.port}...`);
@@ -22,7 +22,7 @@ db.on('err', (err) => {
 });
 
 app.use('/auth', require('./routes/auth'));
-app.use('/api', expressJWT({ secret: process.env.JWT_SECRET}), require('./routes/api' );
+app.use('/api', expressJWT({ secret: process.env.JWT_SECRET}), require('./routes/api' ));
 app.use('/locked', 
         expressJWT({ secret: process.env.JWT_SECRET }).unless({ method: 'POST' }),
         require('./routes/locked'));
