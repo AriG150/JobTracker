@@ -22,6 +22,7 @@ db.on('err', (err) => {
 });
 
 app.use('/auth', require('./routes/auth'));
+app.use('/api', expressJWT({ secret: process.env.JWT_SECRET}), require('./routes/api' );
 app.use('/locked', 
         expressJWT({ secret: process.env.JWT_SECRET }).unless({ method: 'POST' }),
         require('./routes/locked'));
