@@ -55,6 +55,7 @@ router.post('/add', (req, res) => {
     }, (err, application) => {
       // Save the application so that it gets an ID
       application.save((err, newApplication) => {
+        //Create a Note 
         // Push that application into the User.applications array
         user.applications.push(newApplication)
         // console.log(`🐙`,user)
@@ -67,38 +68,7 @@ router.post('/add', (req, res) => {
     }).catch(err => console.log(`🚨`, err))
   })
 
-// router.post('/add', (req, res) => {
-//   User.findById(req.user._id, (err, user) => {
-//     // Create an application
-//     Applications.create({
-//       name: req.body.name,
-//       company: req.body.company,
-//       resume: false,
-//       coverLetter: false,
-//       recruiter: false,
-//       informational: false,
-//     }, (err, application) => {
-//       application.save((err, newApplication) => {
-//         Applications.offer.create({
-//           contacted: false,
-//           rejected: false,
-//           offer: false,
-//           counter: false,
-//           reject: false
-//         }, (err, newOffer) => {
-//           console.log(`🐋`, newOffer)
-//           // Push that application into the User.applications array
-//           user.applications.push(newApplication, newOffer)
-//           // console.log(`🐙`,user)
-//           // user.save((err, updatedUser) => {
-//           //   res.json(updatedUser)
-//           //   console.log(`🐸`, updatedUser)
-//           // });
-//         })
-//       });
-//     });
-//     })
-//   })
+// Create a note for one application 
 
 // //Create a offer for an application
 // router.post('/offer', (req, res) => {
