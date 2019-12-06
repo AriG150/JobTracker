@@ -5,15 +5,13 @@ const offerSchema = new mongoose.Schema({
   rejected: { type: Boolean, default: false },
   offer: { type: Boolean, default: false },
   counter: { type: Boolean, default: false },
-  accept: { type: Boolean, default: false },
-  application_id: mongoose.Schema.Types.ObjectId
+  accept: { type: Boolean, default: false }
 })
 
 const noteSchema = new mongoose.Schema({
   rec_convo: String,
   info_convo: String,
-  notes: String,
-  applicationId: mongoose.Schema.Types.ObjectId
+  comments: String
 })
 
 const applicationSchema = new mongoose.Schema({
@@ -23,11 +21,11 @@ const applicationSchema = new mongoose.Schema({
   coverLetter: {type: Boolean, default: false},
   recruiter: {type: Boolean, default: false}, 
   informational: {type: Boolean, default: false},
-  offer: [offerSchema],
-  note: [noteSchema],
+  offer: {type: offerSchema, default: offerSchema},
+  notes: [noteSchema],
   userId: mongoose.Schema.Types.ObjectId
 });
 
-// module.exports = mongoose.model('Offer', offerSchema);
-// module.exports = mongoose.model('Note', noteSchema);
+module.exports = mongoose.model('Offer', offerSchema);
+module.exports = mongoose.model('Note', noteSchema);
 module.exports = mongoose.model("Application", applicationSchema)
