@@ -17,11 +17,6 @@ router.get('/', (req, res) => {
 
 
 // Get All apps at './apps'
-router.get('/userapp', (req, res) => {
-    Application.find({}, (err, applications) => {
-        res.json(applications);
-        console.log(`found ALL applications`);
-    });
-});
+
 
 module.exports = router;
