@@ -63,6 +63,7 @@ router.post('/apps', (req, res) => {
 router.post('/app/:id/note', (req, res) => {
   User.findById(req.user._id, (err, user) => {
     Applications.findById(req.params.id, (err, application) => {
+      console.log(application)
       //Create note
       note = {
         rec_convo: req.body.rec_convo,
@@ -79,15 +80,53 @@ router.post('/app/:id/note', (req, res) => {
   })
 })
 
+//TODO: This route also edit offer checkboxes? Need another route?
+// PUT /api/apps/:id - Edit unchecked/checked boxes for one app, also edit offer
+// router.put('/app/:aId', (req, res) => {
+//   User.findById(req.user._id).populate('applications').exec((err, user) => {
+//     res.json(user.applications)
+//   })
+// })
 
-// GET /api/app/:id/note - Retrieve notes for one application
-// router.get('/app/:id/note', (req, res) => {
-//   User.findById(req.user._id, (err, user) => {
-//     Note.findById(req.params.id, (err, note) =>{
-//       console.log(`🐮`, note)
+// router.put('/app/:aId', (req, res) => {
+//   Applications.findById(req.params.aId, (err, application) => {
+//     console.log(`🐡`,application)
+//     let copy = {...application}
+//     application.remove();
+//     application.set({
+//       _id: copy._id,
+//       name: copy.name,
+//       company: copy.company,
+//       resume: !copy.resume,
+//       coverLetter: !copy.coverLetter,
+//       recruiter: !copy.recruiter,
+//       informational: !copy.informational,
+//       notes: copy.notes,
+//       offer: copy.offer
+//     });
+//     application.save((err, newApp) => {
+//       res.json(application)
 //     })
 //   })
 // })
+
+
+// PUT /api/app/:appId/note/:nId - Edit note for one app 
+router.put('/app/:appId/note/:nId', (req, res) =>{
+  Applications.findById(req.params.appId, (err, application) => {
+    let note = application.notes.id(req.params.nId)
+    console.log(note)
+    note.set({
+      rec_convo: req.body.rec_convo,
+      info_convo: req.body.info_convo,
+      comments: req.body.comments
+    })
+    application.save()
+    res.send(application)
+  })
+})
+
+// DELETE / api/app/:appId/note/:nId
 
 
 module.exports = router;
