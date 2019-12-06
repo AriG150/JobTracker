@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import WelcomeBody from './WelcomeBody';
 import Login from './Login';
 import Signup from './Signup';
 import axios from 'axios';
@@ -92,14 +93,16 @@ class App extends Component {
     } else {
       contents = (
       <> 
+      <WelcomeBody />
       <Signup liftToken={this.liftToken} />
       <Login liftToken={this.liftToken} />
+      
       </>
     )
   }
   return (
     <div className="App">
-      <header><h1>Welcome to my Site! </h1></header>
+      <header><h1>Welcome to JobTrackers! </h1></header>
       <div className="content-box">
         {contents}
       </div>

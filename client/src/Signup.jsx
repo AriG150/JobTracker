@@ -38,7 +38,7 @@ class Signup extends Component {
   render() {
     return(
       <div className="Signup">
-        <h3>Create a New Account: </h3>
+        <h3>Signup for free: </h3>
         <form onSubmit={this.handleSubmit}>
           Name: <input type="text" name="name" onChange={this.handleChange} value={this.state.name} /> <br />
           Email: <input type="text" name="email" onChange={this.handleChange} value={this.state.email} /> <br />

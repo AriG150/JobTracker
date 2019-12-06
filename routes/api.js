@@ -17,8 +17,8 @@ router.get('/', (req, res) => {
 
 
 // Get All apps at './apps'
-router.get('/apps', (req, res) => {
-    Application.find({}, (err, application) => {
+router.get('/userapp', (req, res) => {
+    Application.find({}, (err, applications) => {
         res.json(applications);
         console.log(`found ALL applications`);
     });
