@@ -40,9 +40,9 @@ class Signup extends Component {
       <div className="Signup">
         <h3>Signup for free: </h3>
         <form onSubmit={this.handleSubmit}>
-          Name: <input type="text" name="name" onChange={this.handleChange} value={this.state.name} /> <br />
-          Email: <input type="text" name="email" onChange={this.handleChange} value={this.state.email} /> <br />
-          Password: <input type="password" name="password" onChange={this.handleChange} value={this.state.password} /> <br />
+          <input type="text" name="name" onChange={this.handleChange} value={this.state.name} placeholder="Name"/> <br />
+          <input type="text" name="email" onChange={this.handleChange} value={this.state.email} placeholder="Email"/> <br />
+          <input type="password" name="password" onChange={this.handleChange} value={this.state.password} placeholder="Password" /> <br />
           <input type="submit" value="Sign Up" />
         </form>
       </div>

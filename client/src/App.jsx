@@ -93,9 +93,10 @@ class App extends Component {
     } else {
       contents = (
       <> 
-      <WelcomeBody />
+      
       <Signup liftToken={this.liftToken} />
       <Login liftToken={this.liftToken} />
+      <WelcomeBody />
       
       </>
     )
