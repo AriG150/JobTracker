@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
-const Application = require('../models/application');
+const Applications = require('../models/application');
 const Note = require('../models/note')
 const Offer = require('../models/offer')
 
@@ -45,30 +45,28 @@ router.get('/userapp', (req, res) => {
 router.post('/add', (req, res) => {
   User.findById(req.user._id, (err, user) => {
     // Create an application
-    Application.create({
+    Applications.create({
       name: req.body.name,
       company: req.body.company,
       resume: false,
       coverLetter: false,
       recruiter: false,
       informational: false,
-    })
-    // Save the application so that it gets an ID
-    // Push that application into the User.applications array
-    // Save the user
-    user.applications.push({
-      name: req.body.name,
-      company: req.body.company,
-      resume: false,
-      coverLetter: false,
-      recruiter: false,
-      informational: false,
-      // TODO: need reference to Offer and Note?
+    }, (err, application) => {
+      // Save the application so that it gets an ID
+      application.save((err, newApplication) => {
+        // Push that application into the User.applications array
+        user.applications.push(newApplication)
+        // console.log(`🐙`,user)
+        res.json(user)
+        user.save((err, updatedUser) => {
+          res.json(updatedUser)
+          console.log(`🐸`, updatedUser)
+        });
+      });
     });
-    user.save( (err, newApp) => {
-      res.json(newApp);
-    });
-  }).catch(err => console.log(`🚨`, err))
-})
+    }).catch(err => console.log(`🚨`, err))
+  })
+
 
 module.exports = router;
