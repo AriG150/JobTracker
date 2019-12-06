@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const offerSchema = new mongoose.Schema({
   contaced: { type: Boolean, default: false },
   rejected: { type: Boolean, default: false },
@@ -9,8 +8,6 @@ const offerSchema = new mongoose.Schema({
   accept: { type: Boolean, default: false },
   application_id: mongoose.Schema.Types.ObjectId
 })
-
-
 
 const noteSchema = new mongoose.Schema({
   rec_convo: String,
@@ -31,4 +28,6 @@ const applicationSchema = new mongoose.Schema({
   userId: mongoose.Schema.Types.ObjectId
 });
 
+// module.exports = mongoose.model('Offer', offerSchema);
+// module.exports = mongoose.model('Note', noteSchema);
 module.exports = mongoose.model("Application", applicationSchema)
