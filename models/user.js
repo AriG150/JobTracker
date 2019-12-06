@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     minlength: [5, 'Email must be between 5 and 99 characters'],
     maxlength: [99, 'Email must be between 5 and 99 characters']
   },
-  application: [{type: mongoose.Schema.Types.ObjectId, ref: "Application"}]
+  applications: [{type: mongoose.Schema.Types.ObjectId, ref: "Application"}]
 });
 
 userSchema.set('toObject', {
