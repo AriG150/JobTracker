@@ -27,18 +27,8 @@ router.get('/apps', (req, res) => {
 // GET /api/userapp - Show all applications for a user 
 router.get('/userapp', (req, res) => {
   User.findById(req.user._id).populate('applications').exec((err, user) => {
-    console.log(`🥳`,req.user._id)
-    if (err) return console.log(`🚨`,err);
-    console.log(`🔥`, user.application[0])
-    let arr = [];
-    for(let i = 0; i < user.application.length; i++){
-        console.log(`🥺`, user.application)
-        if (user.application.length > 0){
-            arr.push(user.application[i])
-        }
-    }
-    res.json(arr);
-  })
+    res.json(user.applications)
+  }).catch(err => console.log(`🚨`, err))
 })
 
 // POST /api/add - Create a new application for a user 
