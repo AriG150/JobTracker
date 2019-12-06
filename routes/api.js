@@ -16,14 +16,6 @@ router.get('/', (req, res) => {
     });
 });
 
-// TEST ROUTE GET /api/apps - Get all applications. 
-router.get('/apps', (req, res) => {
-    Application.find({}, (err, application) => {
-        res.json(applications);
-        console.log(`found ALL applications`);
-    });
-});
-
 // GET /api/userapp - Show all applications for a user 
 router.get('/userapp', (req, res) => {
   User.findById(req.user._id).populate('applications').exec((err, user) => {
