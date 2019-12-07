@@ -8,6 +8,7 @@ function Home () {
         <>
         {/* <Router> */}
             <h1>Hi. This is the home route</h1>
+            <p>This will have the content for all jobs</p>
             {/* <nav>
                 <Link to='/'>Back To Home</Link>{ ' | ' }
                 <Link to='/ApplicationsList'>All My Applications</Link>{ ' | ' }
