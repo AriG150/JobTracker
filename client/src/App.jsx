@@ -4,6 +4,15 @@ import WelcomeBody from './WelcomeBody';
 import Login from './Login';
 import Signup from './Signup';
 import axios from 'axios';
+import Homepage from './Homepage';
+import ApplicationsList from './ApplicationsList';
+import { Link, Router } from 'react-router-dom';
+import JobTracker from './JobTracker';
+import AppDetail from './AppDetail';
+import AddApp from './AddApp';
+import EditNote from './EditNote';
+import AddNote from './AddNote';
+
 
 class App extends Component {
   state = {
@@ -102,12 +111,27 @@ class App extends Component {
     )
   }
   return (
-    <div className="App">
-      <header><h1>Welcome to JobTrackers! </h1></header>
-      <div className="content-box">
-        {contents}
+    <Router>
+      <div className="App">
+        <header><h1>Welcome to JobTrackers! </h1></header>
+        <div className="content-box">
+          {contents}
+        
+          <nav>
+            <Link to='/'>Homepage</Link>{ ' | ' } 
+            <Link to='/JobTracker'>All Jobs</Link>{ ' | ' }
+            <Link to='/AppDetail'>This One App</Link>{ ' | ' }
+            <Link to='/AddApp'>A NEW Job Lead</Link>{ ' | ' }
+            <Link to='/AddNote'>Add A Note</Link>{ ' | ' }
+            <Link to='/EditNote'>Edit Your notes</Link>>{ ' | ' }
+          </nav>
+        
+
+          </div>
       </div>
-    </div>
+    </Router>
+      
+  
   )
   }
 }
