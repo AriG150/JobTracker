@@ -4,6 +4,9 @@ import WelcomeBody from './WelcomeBody';
 import Login from './Login';
 import Signup from './Signup';
 import axios from 'axios';
+import Home from './Home';
+import ApplicationsList from './ApplicationsList';
+import { BrowserRouter, Link, Route, Router } from 'react-router-dom';
 
 class App extends Component {
   state = {
@@ -106,6 +109,17 @@ class App extends Component {
       <header><h1>Welcome to JobTrackers! </h1></header>
       <div className="content-box">
         {contents}
+        <Router>
+          <nav>
+            <Link to='/'>HOME</Link>{ ' | ' }
+            <Link to='/ApplicationsList'>All My Applications</Link>{ ' | ' }
+          </nav>
+          
+        
+        <Route exact path=Home />
+        <ApplicationsList />
+
+        </Router>
       </div>
     </div>
   )
