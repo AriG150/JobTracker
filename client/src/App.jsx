@@ -112,7 +112,17 @@ class App extends Component {
   return (
   <Router>
     <div className="App">
-      <header><h1>Welcome to JobTrackers! </h1></header>
+      <header>
+        <h1>Welcome to JobTrackers! </h1>
+        <nav>
+          <Link to='/'>Home Page</Link>{ ' | ' }
+          <Link to='/JobTracker'>All My Jobs</Link>{ ' | ' }
+          <Link to='/AppDetail'>One Job Detail</Link>{ ' | ' }
+          <Link to='/AddApp'>Add A New Job</Link>{ ' | ' }
+          <Link to='/AddNote'>Add A Note To A Job</Link>{ ' | ' }
+          <Link to='/EditNote'>Edit A Note</Link>{ ' | ' }
+        </nav>
+      </header>
       <div className="content-box">
         {navContents}
         <Route exact path='/' render={ () => <Homepage token={this.state.token} />  } />
