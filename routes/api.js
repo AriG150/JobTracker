@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET /api/use - Show all applications for a user 
+// GET /api/app - Show all applications for a user 
 router.get('/app', (req, res) => {
   User.findById(req.user._id).populate('applications').exec((err, user) => {
     res.json(user.applications)
