@@ -5,21 +5,22 @@ import axios from 'axios';
 function Homepage(props) {
   const [apps, setApps] = useState([])
 
-  useEffect(() => {
-    let config = {
-      headers: {
-        Authorization: `Bearer ${props.token}`
-      }
+
+  let config = {
+    headers: {
+      Authorization: `Bearer ${props.token}`
     }
+  }
+  useEffect(() => {
     axios.get('/api/app', config)
       .then((res) => {
         setApps(res.data)
       })
-  }, [])
+  },[config])
 
   var mappedApps;
-  if(props.apps.length){
-    mappedApps = props.apps.map((app, id) => <div key={id}> {app.name} - {app.company} </div>)
+  if(apps.length){
+    mappedApps = apps.map((app, id) => <div key={id}> {app.name} - {app.company} </div>)
   } else {
     mappedApps = <div> Start your job hunt! <Link to='/AddApp'>Add A New Job</Link>  </div>
   }
