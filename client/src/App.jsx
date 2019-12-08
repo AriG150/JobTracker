@@ -6,7 +6,10 @@ import Signup from './Signup';
 import axios from 'axios';
 import Homepage from './Homepage';
 import ApplicationsList from './ApplicationsList';
-import { Link, Router } from 'react-router-dom';
+import { 
+  BrowserRouter as Router, 
+  Route,
+  Link } from 'react-router-dom';
 import JobTracker from './JobTracker';
 import AppDetail from './AppDetail';
 import AddApp from './AddApp';
@@ -111,27 +114,20 @@ class App extends Component {
     )
   }
   return (
-    <Router>
-      <div className="App">
-        <header><h1>Welcome to JobTrackers! </h1></header>
-        <div className="content-box">
-          {contents}
-        
-          <nav>
-            <Link to='/'>Homepage</Link>{ ' | ' } 
-            <Link to='/JobTracker'>All Jobs</Link>{ ' | ' }
-            <Link to='/AppDetail'>This One App</Link>{ ' | ' }
-            <Link to='/AddApp'>A NEW Job Lead</Link>{ ' | ' }
-            <Link to='/AddNote'>Add A Note</Link>{ ' | ' }
-            <Link to='/EditNote'>Edit Your notes</Link>>{ ' | ' }
-          </nav>
-        
-
-          </div>
+  <Router>
+    <div className="App">
+      <header><h1>Welcome to JobTrackers! </h1></header>
+      <div className="content-box">
+        {contents}
+        <Route exact path='/' render={ () => <Homepage token={this.state.token} />  } />
+        <Route exact path='/JobTracker' render={ () => <JobTracker token={this.state.token} />  } />
+        <Route exact path='/AppDetail' render={ () => <AppDetail token={this.state.token} />  } />
+        <Route exact path='/AddApp' render={ () => <AddApp token={this.state.token} />  } />
+        <Route exact path='/AddNote' render={ () => <AddNote token={this.state.token} />  } />
+        <Route exact path='/EditNote' render={ () => <EditNote token={this.state.token} />  } />
       </div>
-    </Router>
-      
-  
+    </div>
+  </Router>
   )
   }
 }
