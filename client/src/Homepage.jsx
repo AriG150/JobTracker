@@ -1,27 +1,27 @@
-import React from 'react';
-import { Link, Route, Router } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import ApplicationsList from './ApplicationsList';
+import axios from 'axios';
 
 
-function Home () {
-    return (
-        <>
-        {/* <Router> */}
-            <h1>Hi. This is the home route</h1>
-            <p>This will have the content for all jobs</p>
-            {/* <nav>
-                <Link to='/'>Back To Home</Link>{ ' | ' }
-                <Link to='/ApplicationsList'>All My Applications</Link>{ ' | ' }
-            </nav>
-            
-            <main>
-                {/* <Route path='/Home' component={Home} />
-                <Route path='/ApplicationsList' component={ApplicationsList} /> */}
-            {/* </main> */}
-        {/* </Router> */}
-        {/* */}
-        </>
-    )
+function Homepage(props) {
+  const [apps, setApps] = useState([])
+
+  useEffect(() => {
+    axios.get('/api/app')
+      .then((res) => {
+        setApps(res.data)
+      })
+  })
+
+  var mappedApps;
+  if(props.apps.length)
+
+  return (
+    <>
+      <h1> Your jobs: </h1>
+    </>
+  )
 }
 
-export default Home;
+export default Homepage;

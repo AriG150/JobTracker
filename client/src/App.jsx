@@ -91,26 +91,22 @@ class App extends Component {
   }
 
   render (){
-    let contents;
+    let navContents;
     if(this.state.user) {
-      contents = (
-        <> 
-          <p>Hello, {this.state.user.name}</p>
-          <button onClick={this.handleClick}>Test the protected route</button>
+      navContents = (
+        <div className="nav-wrapper"> 
+          {/* <h1>{this.state.user.name}</h1> */}
           <button onClick={this.logout}>Logout</button> <br />
           <p>{this.state.lockedResult}</p>
-
-        </>
+        </div>
       )
     } else {
-      contents = (
-      <> 
-      
+      navContents = (
+      <div className="nav-wrapper"> 
       <Signup liftToken={this.liftToken} />
       <Login liftToken={this.liftToken} />
       <WelcomeBody />
-      
-      </>
+      </div>
     )
   }
   return (
@@ -118,7 +114,7 @@ class App extends Component {
     <div className="App">
       <header><h1>Welcome to JobTrackers! </h1></header>
       <div className="content-box">
-        {contents}
+        {navContents}
         <Route exact path='/' render={ () => <Homepage token={this.state.token} />  } />
         <Route exact path='/JobTracker' render={ () => <JobTracker token={this.state.token} />  } />
         <Route exact path='/AppDetail' render={ () => <AppDetail token={this.state.token} />  } />
