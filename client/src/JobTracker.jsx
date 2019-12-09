@@ -3,7 +3,7 @@ import React from 'react';
 function JobTracker () {
   return (
     <> 
-      <h1>All the jobs in the world</h1>
+      <h1>Track your offers</h1>
     </>
   )
 }
