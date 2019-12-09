@@ -38,7 +38,7 @@ function AddApp(props) {
         setInformational(false)
         setOffer([])
         setNote([])
-      })
+      }, [])
   }
 
   return (
