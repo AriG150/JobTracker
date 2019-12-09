@@ -10,19 +10,21 @@ function Homepage(props) {
     headers: {
       Authorization: `Bearer ${props.token}`
     }
-  }
+  };
   useEffect(() => {
-    axios.get('/api/app', config)
-      .then((res) => {
-        setApps(res.data)
-      })
-  },[config])
+      axios.get('/api/app', config)
+        .then((res) => {
+            setApps(res.data)
+        })
+      console.log(`🐷`,config)
+    }, [props]);
 
+    
   var mappedApps;
   if(apps.length){
-    mappedApps = apps.map((app, id) => <div key={id}> {app.name} - {app.company} </div>)
+    mappedApps = apps.map((app, id) => <div key={id}> Job Title: {app.name} - Company Name: {app.company} </div>)
   } else {
-    mappedApps = <div> Start your job hunt! <Link to='/AddApp'>Add A New Job</Link>  </div>
+    mappedApps = <div> Start your job hunt! <a href="/AddApp"> Add an Application </a>  </div>
   }
 
   return (
