@@ -16,8 +16,8 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET /api/app - Show all applications for a user 
-router.get('/app', (req, res) => {
+// GET /api/apps - Show all applications for a user 
+router.get('/apps', (req, res) => {
   User.findById(req.user._id).populate('applications').exec((err, user) => {
     res.json(user.applications)
   })
@@ -31,6 +31,14 @@ router.get('/apps/:id', (req, res) => {
     })
   })
 })
+
+
+  // GET /api/apps/:id/notes - GET note information for an application
+  router.get('/apps/:id/notes', (req, res) => {
+    Applications.findById(req.params.id, (err, application) => {
+      res.json(application.notes)
+    })
+  })
 
 
 // POST /api/apps - Create a new application for a user 
@@ -59,8 +67,10 @@ router.post('/apps', (req, res) => {
     }).catch(err => console.log(`🚨`, err))
   })
 
-// POST /api/app/:id/note - Create a note for one application 
-router.post('/app/:id/note', (req, res) => {
+
+
+// POST /api/apps/:id/note - Create a note for one application 
+router.post('/apps/:id/note', (req, res) => {
   User.findById(req.user._id, (err, user) => {
     Applications.findById(req.params.id, (err, application) => {
       console.log(application)
@@ -80,9 +90,10 @@ router.post('/app/:id/note', (req, res) => {
   })
 })
 
+
 //TODO: This route also edit offer checkboxes? Need another route?
 // PUT /api/apps/:id - Edit unchecked/checked boxes for one app
-router.put('/app/:aId', (req, res) => {
+router.put('/apps/:aId', (req, res) => {
   Applications.findById(req.params.aId, (err, application) => {
     application.set(req.body);
     console.log(`🐳`,application)
@@ -98,8 +109,8 @@ router.put('/app/:aId', (req, res) => {
 
 // })
 
-// PUT /api/app/:appId/note/:nId - Edit note for one app 
-router.put('/app/:appId/note/:nId', (req, res) =>{
+// PUT /api/apps/:appId/note/:nId - Edit note for one app 
+router.put('/apps/:appId/note/:nId', (req, res) =>{
   Applications.findById(req.params.appId, (err, application) => {
     let note = application.notes.id(req.params.nId)
     console.log(note)
@@ -114,6 +125,6 @@ router.put('/app/:appId/note/:nId', (req, res) =>{
 })
 
 // DELETE / api/app/:appId/ - Delete Applicaiton 
-router.put('api')
+// router.put('api')
 
 module.exports = router;

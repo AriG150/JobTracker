@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import AppDetail from './AppDetail';
 
 function Homepage(props) {
   const [apps, setApps] = useState([])
@@ -12,17 +13,18 @@ function Homepage(props) {
     }
   };
   useEffect(() => {
-      axios.get('/api/app', config)
+    if (props.token) {
+      axios.get('/api/apps', config)
         .then((res) => {
             setApps(res.data)
         })
       console.log(`🐷`,config)
-    }, [props]);
-
+    }
+  }, [props]);
     
   var mappedApps;
   if(apps.length){
-    mappedApps = apps.map((app, id) => <div key={id}> Job Title: <Link to={`/app/${id}`} >  {app.name} </Link> - Company Name: {app.company} </div>)
+    mappedApps = apps.map((app, id) => <div key={id}> Job Title: <Link to={{ pathname: `/app/${app._id}`, token: props.token }} >  {app.name} </Link> - Company Name: {app.company} </div>)
   } else {
     mappedApps = <div> Start your job hunt! <Link to={'/AddApp'}> Add an Application </Link>  </div>
   }
@@ -30,8 +32,10 @@ function Homepage(props) {
   return (
     <div>
       <h1> Your jobs: </h1>
+      {/* <span>{props.token}</span> */}
         {mappedApps}
         {/* <AppDetail /> */}
+        
     </div>
   )
 }
