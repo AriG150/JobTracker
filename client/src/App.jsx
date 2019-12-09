@@ -5,7 +5,6 @@ import Login from './Login';
 import Signup from './Signup';
 import axios from 'axios';
 import Homepage from './Homepage';
-import ApplicationsList from './ApplicationsList';
 import { 
   BrowserRouter as Router, 
   Route,
@@ -125,9 +124,9 @@ class App extends Component {
       </header>
       <div className="content-box">
         {navContents}
-        <Route exact path='/' render={ () => <Homepage token={this.state.token} />  } />
+        <Route exact path='/' render={ (props) => <Homepage {...props} token={this.state.token} />  } />
         <Route exact path='/JobTracker' render={ () => <JobTracker token={this.state.token} />  } />
-        <Route exact path='/app/:id' render={ () => <AppDetail token={this.state.token} />  } />
+        <Route exact path='/app/:id' component={AppDetail} />
         <Route exact path='/AddApp' render={ () => <AddApp token={this.state.token} />  } />
         <Route exact path='/AddNote' render={ () => <AddNote token={this.state.token} />  } />
         <Route exact path='/EditNote' render={ () => <EditNote token={this.state.token} />  } />
