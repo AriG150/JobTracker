@@ -33,6 +33,14 @@ router.get('/apps/:id', (req, res) => {
 })
 
 
+  // GET /api/app/:id/note - GET note information for an application
+  router.get('/app/:id/note', (req, res) => {
+    Applications.findById(req.params.id, (err, application) => {
+      res.json(application.notes)
+    })
+  })
+
+
 // POST /api/apps - Create a new application for a user 
 router.post('/apps', (req, res) => {
   User.findById(req.user._id, (err, user) => {
@@ -59,6 +67,8 @@ router.post('/apps', (req, res) => {
     }).catch(err => console.log(`🚨`, err))
   })
 
+
+
 // POST /api/app/:id/note - Create a note for one application 
 router.post('/app/:id/note', (req, res) => {
   User.findById(req.user._id, (err, user) => {
@@ -79,6 +89,7 @@ router.post('/app/:id/note', (req, res) => {
     })
   })
 })
+
 
 //TODO: This route also edit offer checkboxes? Need another route?
 // PUT /api/apps/:id - Edit unchecked/checked boxes for one app
