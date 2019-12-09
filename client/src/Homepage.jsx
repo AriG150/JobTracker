@@ -32,10 +32,7 @@ function Homepage(props) {
   return (
     <div>
       <h1> Your jobs: </h1>
-      {/* <span>{props.token}</span> */}
         {mappedApps}
-        {/* <AppDetail /> */}
-        
     </div>
   )
 }
