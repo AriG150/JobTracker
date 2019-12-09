@@ -36,8 +36,6 @@ function Homepage(props) {
     <div>
       <h1> Your jobs: </h1>
         {mappedApps}
-        <AppDetail />
-        
     </div>
   )
 }

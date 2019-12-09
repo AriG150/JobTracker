@@ -15,7 +15,6 @@ function AppDetail(props) {
     }
   };
 
-
   useEffect(() => {
     if (props.match.params.id && props.location.token) {
       axios.get(`/api/apps/${props.match.params.id}`, config)
