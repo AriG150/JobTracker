@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function Homepage(props) {
@@ -22,15 +22,16 @@ function Homepage(props) {
     
   var mappedApps;
   if(apps.length){
-    mappedApps = apps.map((app, id) => <div key={id}> Job Title: {app.name} - Company Name: {app.company} </div>)
+    mappedApps = apps.map((app, id) => <div key={id}> Job Title: <Link to={`/app/${id}`} >  {app.name} </Link> - Company Name: {app.company} </div>)
   } else {
-    mappedApps = <div> Start your job hunt! <a href="/AddApp"> Add an Application </a>  </div>
+    mappedApps = <div> Start your job hunt! <Link to={'/AddApp'}> Add an Application </Link>  </div>
   }
 
   return (
     <div>
       <h1> Your jobs: </h1>
         {mappedApps}
+        {/* <AppDetail /> */}
     </div>
   )
 }

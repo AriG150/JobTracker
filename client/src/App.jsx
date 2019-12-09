@@ -116,7 +116,7 @@ class App extends Component {
         <h1>Welcome to JobTrackers! </h1>
         <nav>
           <Link to='/'>Home Page</Link>{ ' | ' }
-          <Link to='/JobTracker'>All My Jobs</Link>{ ' | ' }
+          <Link to='/JobTracker'>All Offers</Link>{ ' | ' }
           <Link to='/AppDetail'>One Job Detail</Link>{ ' | ' }
           <Link to='/AddApp'>Add A New Job</Link>{ ' | ' }
           <Link to='/AddNote'>Add A Note To A Job</Link>{ ' | ' }
@@ -127,7 +127,7 @@ class App extends Component {
         {navContents}
         <Route exact path='/' render={ () => <Homepage token={this.state.token} />  } />
         <Route exact path='/JobTracker' render={ () => <JobTracker token={this.state.token} />  } />
-        <Route exact path='/AppDetail' render={ () => <AppDetail token={this.state.token} />  } />
+        <Route exact path='/app/:id' render={ () => <AppDetail token={this.state.token} />  } />
         <Route exact path='/AddApp' render={ () => <AddApp token={this.state.token} />  } />
         <Route exact path='/AddNote' render={ () => <AddNote token={this.state.token} />  } />
         <Route exact path='/EditNote' render={ () => <EditNote token={this.state.token} />  } />

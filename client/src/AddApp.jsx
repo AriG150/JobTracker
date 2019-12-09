@@ -2,42 +2,50 @@ import React, {useState} from 'react';
 import axios from 'axios';
 
 function AddApp(props) {
-const [name, setName] = useState('')
-const [company, setCompany] = useState('')
-const [resume, setResume] = useState(falseA)
-const [coverLetter, setCoverLetter] = useState(false)
-const [recruiter, setRecruiter] = useState(false)
-const [informational, setInformational] = useState(false)
-const [offer, setOffer] = useState([])
-const [note, setNote] = useState([])
-const [submit, setSubmit] = useState()
+
+  const [name, setName] = useState('')
+  const [company, setCompany] = useState('')
+  const [resume, setResume] = useState(false)
+  const [coverLetter, setCoverLetter] = useState(false)
+  const [recruiter, setRecruiter] = useState(false)
+  const [informational, setInformational] = useState(false)
+  const [offer, setOffer] = useState([])
+  const [note, setNote] = useState([])
 
   let config = {
     headers: {
       Authorization: `Bearer ${props.token}`
     }
   };
-  handleSubmit = (e) => {
-    e.preventDefault()
-    axios.post('/api/apps', config)
-      .then((res) => {
-        setName(res.name),
-        setCompany(res.company),
-        setResume(res.resume),
-        setCoverLetter(res.coverLetter),
-        setRecruiter(res.recruiter),
-        setInformational(res.setInformation),
-        setOffer(res.offer),
-        setNote(res.note)
-  }), []
-}
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    axios.post('/api/apps', {
+      name: name,
+      company: company,
+      resume: resume,
+      coverLetter: coverLetter,
+      recruiter: recruiter,
+      offer: offer,
+      note: note
+    }, config)
+      .then(res => {
+        setName('')
+        setCompany('')
+        setResume(false)
+        setCoverLetter(false)
+        setRecruiter(false)
+        setInformational(false)
+        setOffer([])
+        setNote([])
+      })
+  }
 
   return (
     <div>
         <h1>Start your Application: </h1>
         <div className="form-id">
-          <form action="POST" onSubmit={handleSubmit}>
+          <form action="POST" onSubmit={handleSubmit} >
             Job Title: <input value={name} onChange={e => setName(e.target.value)} type="text" name="title" /> <br />
             Company Name: <input value={company} onChange={e => setCompany(e.target.value)} type="text" name="company" /> <br />
             <input value={resume} onChange={e => setResume(e.target.resume)} type="hidden" name="resume"/>
