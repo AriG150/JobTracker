@@ -118,7 +118,7 @@ class App extends Component {
           {/* <Link to='/JobTracker'>All Offers</Link>{ ' | ' } */}
           {/* <Link to='/app/:id'>One Job Detail</Link>{ ' | ' } */}
           <Link to='/AddApp'>Add A New Job</Link>{ ' | ' }
-          <Link to='/app/:id/note'>Add A Note To A Job</Link>{ ' | ' }
+          {/* <Link to='/app/:id/note'>Add A Note To A Job</Link>{ ' | ' } */}
           {/* <Link to='/EditNote'>Edit A Note</Link>{ ' | ' } */}
         </nav>
       </header>

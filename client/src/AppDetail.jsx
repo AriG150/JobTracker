@@ -9,7 +9,9 @@ function AppDetail(props) {
   const [coverLetter, setCoverLetter] = useState(false)
   const [recruiter, setRecruiter] = useState(false)
   const [informational, setInformational] = useState(false)
+  const [refetch, setRefetch] = useState(false)
 
+  
   let config = {
     headers: {
       Authorization: `Bearer ${props.location.token}`
@@ -20,33 +22,59 @@ function AppDetail(props) {
     if (props.match.params.id && props.location.token) {
       axios.get(`/api/apps/${props.match.params.id}`, config)
         .then((res) => {
+          console.log(res.data)
           setApp(res.data)
           setNotes(res.data.notes)
+          setResume(res.data.resume)
+          setCoverLetter(res.data.coverLetter)
+          setRecruiter(res.data.recruiter)
+          setInformational(res.data.informational)
+          if(refetch){
+            setRefetch(false)
+          }
         })
       }
-    }, [props])
+    }, [props, refetch])
+
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      axios.put(`/api/apps/${props.match.params.id}`, {
+        resume,
+        coverLetter,
+        recruiter,
+        informational
+      },config)
+      .then(res => {
+        setResume(resume)
+        setCoverLetter(coverLetter)
+        setRecruiter(recruiter)
+        setInformational(informational)
+        setRefetch(true)
+      })
+    }
     
     var displayMap;
-    if(app && notes) {
-      console.log(`🦊`, app)
-      console.log(`🐞`, notes)
+    if(app && notes && notes[0]) {
+      // console.log(`🦊`, app)
       //Map over array to show the 3 notes 
       displayMap = (<div>
         <p>Job Title: {app.name} — Company Name: {app.company}</p>
-        <label>Sent Resume: <input type='checkbox' onClick={e => setResume(!resume)} name='resume' value={app.resume} /></label><br /> 
-        <label>Sent Cover Letter(if required?): <input type='checkbox'  onClick={e => setCoverLetter(!coverLetter)} name='coverLetter' value={app.coverLetter} /></label><br />
-        <label>Contacted Recruiter: <input type='checkbox' onClick={e => setRecruiter(!recruiter)} name='recruiter' value={app.recruiter} /></label><br />
-        <label>Informational Interview: <input type='checkbox' onClick={e => setInformational(!informational)} name='informational' value={app.informational} /></label>
+        <form onSubmit={handleSubmit}>
+          <label>Sent Resume: <input type='checkbox' checked={resume} onClick={e => setResume(!resume)} name='resume' value={resume} /></label><br /> 
+          <label>Sent Cover Letter(if required?): <input type='checkbox'  checked={coverLetter} onClick={e => setCoverLetter(!coverLetter)} name='coverLetter' value={coverLetter} /></label><br />
+          <label>Contacted Recruiter: <input type='checkbox' checked={recruiter} onClick={e => setRecruiter(!recruiter)} name='recruiter' value={recruiter} /></label><br />
+          <label>Informational Interview: <input type='checkbox' checked={informational}  onClick={e => setInformational(!informational)} name='informational' value={informational} /></label>
+          <input type="submit" value="submit" name="submit"/>
+        </form>
         <p>Recruiter Conversation Notes: {notes[0].rec_convo}</p>
         <p>Informational Conversation Notes: {notes[0].info_convo}</p>
         <p>General Notes: {notes[0].comments}</p>
-
-
-        <Link to={{ pathname: `/app/${app._id}/note`, token: props.token } }> Add Notes for Application </Link>
+        <Link to={{ pathname: `/app/${app._id}/note`, token: props.location.token } }> Add Notes for Application </Link>
       </div>)
     } else{
+      console.log(`🐞`, props.location.token)
       displayMap = (<div> 
-        <p> You don't have any applications </p>
+        <p> <Link to={{ pathname: `/app/${app._id}/note`, token: props.location.token } }> Add Notes for Application </Link> </p>
         </div>)
     }
 
