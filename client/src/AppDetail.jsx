@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link}  from 'react-router-dom';
+import { Link }  from 'react-router-dom';
 import axios from 'axios';
 
 function AppDetail(props) {
@@ -11,7 +11,7 @@ function AppDetail(props) {
   const [informational, setInformational] = useState(false)
   const [refetch, setRefetch] = useState(false)
 
-  
+
   let config = {
     headers: {
       Authorization: `Bearer ${props.location.token}`
@@ -52,21 +52,7 @@ function AppDetail(props) {
         setRefetch(true)
       })
     }
-    
-    
-    useEffect(() => {
-      if (props.match.params.id && props.loction.token) {
-        axios.put(`/api/apps/${props.match.params.id}`, config)
-          .then((res) => {
-            setResume(!resume)
-            setCoverLetter(!coverLetter)
-            setRecruiter(!recruiter)
-            setInformational(!informational)
-          })
-      }
-    })
-    
-    
+
     var displayMap;
     if(app && notes && notes[0]) {
       //Map over array to show the 3 notes 
@@ -98,6 +84,5 @@ function AppDetail(props) {
     </>
   )
 }
-
 
 export default AppDetail;
