@@ -52,9 +52,9 @@ function AppDetail(props) {
         setRefetch(true)
       })
     }
-    
+    // app && notes && notes[0]
     var displayMap;
-    if(app && notes && notes[0]) {
+    if(app && notes ) {
       //Map over array to show the 3 notes 
       displayMap = (<div>
         <p>Job Title: {app.name} — Company Name: {app.company}</p>
@@ -71,7 +71,6 @@ function AppDetail(props) {
         <Link to={{ pathname: `/app/${app._id}/note`, token: props.location.token } }> Add Notes for Application </Link>
       </div>)
     } else{
-      // console.log(`🐞`, props.location.token)
       displayMap = (<div> 
         <p> <Link to={{ pathname: `/app/${app._id}/note`, token: props.location.token } }> Add Notes for Application </Link> </p>
         </div>)

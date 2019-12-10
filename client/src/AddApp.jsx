@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
 function AddApp(props) {
@@ -11,6 +12,7 @@ function AddApp(props) {
   const [informational, setInformational] = useState(false)
   const [offer, setOffer] = useState([])
   const [note, setNote] = useState([])
+  const [redirect, setRedirect] = useState(false)
 
   let config = {
     headers: {
@@ -38,9 +40,11 @@ function AddApp(props) {
         setInformational(false)
         setOffer([])
         setNote([])
+        setRedirect(true)
       }, [])
   }
 
+  if (redirect) { return <Redirect to={`/`} /> }
   return (
     <div>
         <h1>Start your Application: </h1>
