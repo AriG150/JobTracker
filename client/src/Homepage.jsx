@@ -5,7 +5,10 @@ import AppDetail from './AppDetail';
 
 function Homepage(props) {
   const [apps, setApps] = useState([])
-
+  const [resume, setResume] = useState(false)
+  const [coverLetter, setCoverLetter] = useState(false)
+  const [recruiter, setRecruiter] = useState(false)
+  const [informational, setInformational] = useState(false)
 
   let config = {
     headers: {

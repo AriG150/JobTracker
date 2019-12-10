@@ -92,8 +92,9 @@ router.post('/apps/:id/note', (req, res) => {
 
 
 //TODO: This route also edit offer checkboxes? Need another route?
-// PUT /api/apps/:id - Edit unchecked/checked boxes for one app
 
+
+// PUT /api/apps/:id - Edit unchecked/checked boxes for one app
 router.put('/apps/:aId', (req, res) => {
   console.log('I"M HERE----------------------------------------------------------')
   Applications.findById(req.params.aId, (err, application) => {
@@ -102,6 +103,16 @@ router.put('/apps/:aId', (req, res) => {
     application.save((err, newApp) => {
       res.json(newApp)
     })
+  })
+})
+
+
+// DELETE /api/apps/:id - delete one app
+router.delete('/apps/:aId', (req, res) => {
+  console.log(`We want to DESTROY A JOB`)
+  Applications.findByIdAndDelete(req.params.aId, req.body, (err, application) => {
+    console.log(`Are you gone yet?`, application)
+    res.json(application);
   })
 })
 
