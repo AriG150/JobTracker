@@ -44,7 +44,7 @@ function AddApp(props) {
       }, [])
   }
 
-  if (redirect) { return <Redirect to={`/`} /> }
+  if (redirect) { return <Redirect to={`/profile`} /> }
   return (
     <div>
         <h1>Start your Application: </h1>

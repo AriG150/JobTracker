@@ -28,7 +28,6 @@ class Login extends Component {
         localStorage.setItem('mernToken', response.data.token)
         this.props.liftToken(response.data)
         this.setState({ redirect: <Redirect to={"/profile"} /> })
-        console.log(`🐽`, this.state.redirect)
       }
     }).catch( err => {
       // Rate limiter catch block

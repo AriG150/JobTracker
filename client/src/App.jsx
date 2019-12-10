@@ -11,6 +11,7 @@ import axios from 'axios';
 import { 
   BrowserRouter as Router, 
   Route,
+  Redirect,
   Link } from 'react-router-dom';
 
 class App extends Component {
@@ -19,7 +20,8 @@ class App extends Component {
     token: '',
     user: null,
     errorMessage: '',
-    lockedResult: ''
+    lockedResult: '',
+    logout: null
   }
 
   checkForLocalToken = () => {
@@ -71,7 +73,8 @@ class App extends Component {
     localStorage.removeItem('mernToken');
     this.setState({
       token: '',
-      user: null
+      user: null,
+      logout: <Redirect to='/' /> 
     })
   }
 
@@ -100,16 +103,19 @@ class App extends Component {
   }
   return (
     <Router>
-      <h1>Welcome to JobTrackers! </h1>
-      {navContents}
+      <div className="header">
+        <h1>Welcome to JobTrackers! </h1>
+          {navContents}
+        </div>
+      {this.state.logout}
       <Route exact path='/' render={ () => <Homepage token={this.state.token} />  } />
       <Route exact path='/profile' render={ (props) => <Profile {...props} token={this.state.token} />  } />
       <Route exact path="/signup" render={ () => <Signup liftToken={this.liftToken} /> } />
       <Route exact path="/login" render={ () => <Login liftToken={this.liftToken} /> } />
       <Route exact path='/app/:id' component={AppDetail} />
       <Route exact path='/AddApp' render={ () => <AddApp token={this.state.token} />  } />
-      <Route exact path='/app/:id/note' component={AddNote}  />
-      <footer>
+      <Route exact path='app/:id/note' component={AddNote}  />
+      <footer className="footer">
         <span> Created By: </span>
         <a className="link" href="https://github.com/AriG150" target="_blank" rel="noopener noreferrer" > Ari </a> and
         <a className="link" href="https://github.com/hunterhanna2010" target="_blank" rel="noopener noreferrer" > Josh </a>
