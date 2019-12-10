@@ -13,8 +13,8 @@ import AppDetail from './AppDetail';
 import AddApp from './AddApp';
 import AddNote from './AddNote';
 
-
 class App extends Component {
+
   state = {
     token: '',
     user: null,
@@ -74,25 +74,12 @@ class App extends Component {
     })
   }
 
-  handleClick = (e) => {
-    let config = {
-      headers: {
-        Authorization: `Bearer ${this.state.token}`
-      }
-    }
-    axios.get('/locked/test', config).then( response => {
-      this.setState({
-        lockedResult: response.data
-      })
-    })
-  }
 
-  render (){
+  render (){   
     let navContents;
     if(this.state.user) {
       navContents = (
         <div className="nav-wrapper"> 
-          {/* <h1>{this.state.user.name}</h1> */}
           <button onClick={this.logout}>Logout</button> <br />
           <p>{this.state.lockedResult}</p>
         </div>
@@ -121,13 +108,14 @@ class App extends Component {
         <Route exact path='/' render={ (props) => <Homepage {...props} token={this.state.token} />  } />
         <Route exact path='/app/:id' component={AppDetail} />
         <Route exact path='/AddApp' render={ () => <AddApp token={this.state.token} />  } />
-        <Route exact path='/app/:id/note' component={AddNote} />  } />
+        <Route exact path='/app/:id/note' component={AddNote}  />
       </div>
     </div>
   </Router>
   )
   }
 }
+
 
 
 export default App;
