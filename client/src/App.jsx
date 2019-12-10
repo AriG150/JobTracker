@@ -11,6 +11,7 @@ import axios from 'axios';
 import { 
   BrowserRouter as Router, 
   Route,
+  Redirect,
   Link } from 'react-router-dom';
 
 class App extends Component {
@@ -19,7 +20,8 @@ class App extends Component {
     token: '',
     user: null,
     errorMessage: '',
-    lockedResult: ''
+    lockedResult: '',
+    logout: null
   }
 
   checkForLocalToken = () => {
@@ -71,7 +73,8 @@ class App extends Component {
     localStorage.removeItem('mernToken');
     this.setState({
       token: '',
-      user: null
+      user: null,
+      logout: <Redirect to='/' /> 
     })
   }
 
@@ -114,6 +117,7 @@ class App extends Component {
         <a className="link" href="https://github.com/AriG150" target="_blank" rel="noopener noreferrer" > Ari </a> and
         <a className="link" href="https://github.com/hunterhanna2010" target="_blank" rel="noopener noreferrer" > Josh </a>
       </footer>
+      {this.state.logout}
   </Router>
   )
   }
