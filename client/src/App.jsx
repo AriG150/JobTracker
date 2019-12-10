@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import './App.css';
-import WelcomeBody from './WelcomeBody';
+import AppDetail from './AppDetail';
+import AddApp from './AddApp';
+import AddNote from './AddNote';
 import Login from './Login';
-import Signup from './Signup';
-import axios from 'axios';
 import Homepage from './Homepage';
+import Signup from './Signup';
+import Profile from './Profile';
+import axios from 'axios';
 import { 
   BrowserRouter as Router, 
   Route,
   Link } from 'react-router-dom';
-import AppDetail from './AppDetail';
-import AddApp from './AddApp';
-import AddNote from './AddNote';
 
 class App extends Component {
 
@@ -66,8 +66,9 @@ class App extends Component {
     })
   }
 
-  logout = () => {
-    localStorage.removeItem('mernToken')
+  logout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem('mernToken');
     this.setState({
       token: '',
       user: null
@@ -75,42 +76,39 @@ class App extends Component {
   }
 
 
-  render (){   
+  render () {   
     let navContents;
     if(this.state.user) {
       navContents = (
         <div className="nav-wrapper"> 
-          <button onClick={this.logout}>Logout</button> <br />
-          <p>{this.state.lockedResult}</p>
+          <nav>
+            <Link to='/'  onClick={this.logout}> Logout </Link> { ' | ' }
+            <Link to='/profile'>Profile</Link>{ ' | ' }
+            <Link to='/AddApp'>Add A New Job</Link>{ ' | ' }
+          </nav>
         </div>
       )
     } else {
       navContents = (
       <div className="nav-wrapper"> 
-      <Signup liftToken={this.liftToken} />
-      <Login liftToken={this.liftToken} />
-      <WelcomeBody />
+        <nav>
+          <Link to='/signup'> Signup </Link> { ' | ' }
+          <Link to='/login'> Login </Link> { ' | ' }
+        </nav>
       </div>
     )
   }
   return (
-  <Router>
-    <div className="App">
-      <header>
+    <Router>
         <h1>Welcome to JobTrackers! </h1>
-        <nav>
-          <Link to='/'>Home Page</Link>{ ' | ' }
-          <Link to='/AddApp'>Add A New Job</Link>{ ' | ' }
-        </nav>
-      </header>
-      <div className="content-box">
         {navContents}
-        <Route exact path='/' render={ (props) => <Homepage {...props} token={this.state.token} />  } />
+        <Route exact path='/' render={ (props) => <Homepage token={this.state.token} />  } />
+        <Route exact path='/profile' render={ (props) => <Profile {...props} token={this.state.token} />  } />
+        <Route exact path="/signup" render={ () => <Signup liftToken={this.liftToken} /> } />
+        <Route exact path="/login" render={ () => <Login liftToken={this.liftToken} /> } />
         <Route exact path='/app/:id' component={AppDetail} />
         <Route exact path='/AddApp' render={ () => <AddApp token={this.state.token} />  } />
         <Route exact path='/app/:id/note' component={AddNote}  />
-      </div>
-    </div>
   </Router>
   )
   }

@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
 class Login extends Component {
   state = {
     email: '',
     password: '',
-    message: ''
+    message: '',
+    redirect: null
   }
 
   handleChange = (e) => {
@@ -25,6 +27,7 @@ class Login extends Component {
       } else {
         localStorage.setItem('mernToken', response.data.token)
         this.props.liftToken(response.data)
+        this.setState({ redirect: <Redirect to='/profile' /> })
       }
     }).catch( err => {
       // Rate limiter catch block

@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {Redirect} from 'react-router-dom';
 
 class Signup extends Component {
   state = {
     name: '',
     email: '',
     password: '',
-    message: ''
+    message: '',
+    redirect: null
   }
 
   handleChange = (e) => {
@@ -28,6 +30,7 @@ class Signup extends Component {
       } else {
         localStorage.setItem('mernToken', response.data.token)
         this.props.liftToken(response.data)
+        this.setState({ redirect: <Redirect to='/profile' /> })
       }
     }).catch( err => {
       // This block catches rate limiter errors 
