@@ -55,7 +55,6 @@ function AppDetail(props) {
     
     var displayMap;
     if(app && notes && notes[0]) {
-      // console.log(`🦊`, app)
       //Map over array to show the 3 notes 
       displayMap = (<div>
         <p>Job Title: {app.name} — Company Name: {app.company}</p>
