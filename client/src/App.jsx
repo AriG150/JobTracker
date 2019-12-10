@@ -114,7 +114,7 @@ class App extends Component {
       <Route exact path="/login" render={ () => <Login liftToken={this.liftToken} /> } />
       <Route exact path='/app/:id' component={AppDetail} />
       <Route exact path='/AddApp' render={ () => <AddApp token={this.state.token} />  } />
-      <Route exact path='/app/:id/note' component={AddNote}  />
+      <Route exact path='app/:id/note' component={AddNote}  />
       <footer className="footer">
         <span> Created By: </span>
         <a className="link" href="https://github.com/AriG150" target="_blank" rel="noopener noreferrer" > Ari </a> and

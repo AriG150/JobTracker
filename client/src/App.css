@@ -25,9 +25,9 @@ li {
   text-align: center;
 }
 
-.header  {
+/* .header  {
   background-color: #5789bf;
-}
+} */
 
 input {
   text-align: center;
@@ -44,12 +44,12 @@ label {
   header {
     font-size: 1em;
     text-align: center;
-    background-color: #5789bf
+    /* background-color: #5789bf */
   }
 
   h1 {
     font-size: 1.5em;
-    background-color: #5789bf
+    /* background-color: #5789bf */
   }
 }
 
