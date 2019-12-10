@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
 class Login extends Component {
   state = {
     email: '',
     password: '',
-    message: ''
+    message: '',
+    redirect: null
   }
 
   handleChange = (e) => {
@@ -25,6 +27,8 @@ class Login extends Component {
       } else {
         localStorage.setItem('mernToken', response.data.token)
         this.props.liftToken(response.data)
+        this.setState({ redirect: <Redirect to={"/profile"} /> })
+        console.log(`🐽`, this.state.redirect)
       }
     }).catch( err => {
       // Rate limiter catch block
@@ -32,14 +36,25 @@ class Login extends Component {
     })
   }
   render() {
+    var output;
+    if(this.state.redirect) {
+      output = this.state.redirect
+    } else {
+      output = (
+        <div className="Login">
+          <h3>Returning? Login here:</h3>
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" name="email" onChange={this.handleChange} value={this.state.email} placeholder="Email" /> <br />
+            <input type="password" name="password" onChange={this.handleChange} value={this.state.password} placeholder="Password" /> <br />
+            <input type="submit" value="Log In"/>
+          </form>
+        </div>
+      )
+    }
+
     return (
-      <div className="Login">
-        <h3>Returning? Login here:</h3>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" name="email" onChange={this.handleChange} value={this.state.email} placeholder="Email" /> <br />
-          <input type="password" name="password" onChange={this.handleChange} value={this.state.password} placeholder="Password" /> <br />
-          <input type="submit" value="Log In"/>
-        </form>
+      <div>
+        {output}
       </div>
     )
   }

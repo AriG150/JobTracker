@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {Redirect} from 'react-router-dom';
 
 class Signup extends Component {
   state = {
     name: '',
     email: '',
     password: '',
-    message: ''
+    message: '',
+    redirect: null
   }
 
   handleChange = (e) => {
@@ -24,10 +26,10 @@ class Signup extends Component {
     }).then( response => {
       if (response.data.type === 'error') {
         console.log(`🚨 Error`, response.data.message)
-        // TODO: maybe put this message in state?
       } else {
         localStorage.setItem('mernToken', response.data.token)
         this.props.liftToken(response.data)
+        this.setState({ redirect: <Redirect to={'/profile'} /> })
       }
     }).catch( err => {
       // This block catches rate limiter errors 
@@ -36,7 +38,11 @@ class Signup extends Component {
   }
 
   render() {
-    return(
+    var output;
+    if(this.state.redirect) {
+      output = this.state.redirect
+    } else {
+      output = (
       <div className="Signup">
         <h3>Signup for free: </h3>
         <form onSubmit={this.handleSubmit}>
@@ -45,6 +51,12 @@ class Signup extends Component {
           <input type="password" name="password" onChange={this.handleChange} value={this.state.password} placeholder="Password" /> <br />
           <input type="submit" value="Sign Up" />
         </form>
+      </div>
+      )
+    }
+    return(
+      <div>
+        {output}
       </div>
     )
   }
