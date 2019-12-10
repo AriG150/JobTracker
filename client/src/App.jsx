@@ -82,7 +82,7 @@ class App extends Component {
       navContents = (
         <div className="nav-wrapper"> 
           <nav>
-            <Link to='/'  onClick={this.logout}> Logout </Link> { ' | ' }
+            <Link to='/' onClick={this.logout}> Logout </Link> { ' | ' }
             <Link to='/profile'>Profile</Link>{ ' | ' }
             <Link to='/AddApp'>Add A New Job</Link>{ ' | ' }
           </nav>
@@ -100,15 +100,20 @@ class App extends Component {
   }
   return (
     <Router>
-        <h1>Welcome to JobTrackers! </h1>
-        {navContents}
-        <Route exact path='/' render={ (props) => <Homepage token={this.state.token} />  } />
-        <Route exact path='/profile' render={ (props) => <Profile {...props} token={this.state.token} />  } />
-        <Route exact path="/signup" render={ () => <Signup liftToken={this.liftToken} /> } />
-        <Route exact path="/login" render={ () => <Login liftToken={this.liftToken} /> } />
-        <Route exact path='/app/:id' component={AppDetail} />
-        <Route exact path='/AddApp' render={ () => <AddApp token={this.state.token} />  } />
-        <Route exact path='/app/:id/note' component={AddNote}  />
+      <h1>Welcome to JobTrackers! </h1>
+      {navContents}
+      <Route exact path='/' render={ () => <Homepage token={this.state.token} />  } />
+      <Route exact path='/profile' render={ (props) => <Profile {...props} token={this.state.token} />  } />
+      <Route exact path="/signup" render={ () => <Signup liftToken={this.liftToken} /> } />
+      <Route exact path="/login" render={ () => <Login liftToken={this.liftToken} /> } />
+      <Route exact path='/app/:id' component={AppDetail} />
+      <Route exact path='/AddApp' render={ () => <AddApp token={this.state.token} />  } />
+      <Route exact path='/app/:id/note' component={AddNote}  />
+      <footer>
+        <span> Created By: </span>
+        <a className="link" href="https://github.com/AriG150" target="_blank" rel="noopener noreferrer" > Ari </a> and
+        <a className="link" href="https://github.com/hunterhanna2010" target="_blank" rel="noopener noreferrer" > Josh </a>
+      </footer>
   </Router>
   )
   }
