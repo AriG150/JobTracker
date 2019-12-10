@@ -1,14 +1,27 @@
 body {
+  font-family: 'Baloo Bhai', cursive;
   margin-left: 25px;
-  background-image: url('https://images.unsplash.com/photo-1443770760695-e1bfa3e62229?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');
+  background-image: url('https://images.unsplash.com/photo-1464999833595-997c340befb4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
   width: 100vw;
 }
 
+.content-box {
+  font-size: 1.5em;
+}
+
+h1 {
+  font-size: 2em;
+}
+
 li {
   list-style: none;
+}
+
+.content-box, header, a, nav {
+  text-align: center;
 }
 
 input {
@@ -17,24 +30,25 @@ input {
   font-size: 1em;
 }
 
-.Login {
-  margin-left: 30px;
-}
-
-.Welcome {
-  margin-left: 300px;
-  margin-top: 100px;
-}
-
-.Jobs {
-  margin-left: 15px;
-  margin-top: 10px;
+label {
+  height: 25px;
+  width: 25px;
 }
 
 
-/* .App {
-  text-align: center;
-} */
+@media screen and (max-width: 700px) {
+  header {
+    font-size: 1em;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+}
+
+
+
 
 .App-logo {
   height: 40vmin;
