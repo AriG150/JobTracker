@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import AppDetail from './AppDetail';
 
 function Homepage(props) {
   const [apps, setApps] = useState([])
@@ -16,7 +15,7 @@ function Homepage(props) {
     if (props.token) {
       axios.get('/api/apps', config)
         .then((res) => {
-            setApps(res.data)
+          setApps(res.data)
         })
       console.log(`🐷`,config)
     }

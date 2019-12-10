@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link}  from 'react-router-dom';
 import axios from 'axios';
+import MappedNotes from './MappedNotes';
 
 function AppDetail(props) {
   const [app, setApp] = useState({})
@@ -22,7 +23,6 @@ function AppDetail(props) {
     if (props.match.params.id && props.location.token) {
       axios.get(`/api/apps/${props.match.params.id}`, config)
         .then((res) => {
-          console.log(res.data)
           setApp(res.data)
           setNotes(res.data.notes)
           setResume(res.data.resume)
@@ -54,8 +54,9 @@ function AppDetail(props) {
     }
     // app && notes && notes[0]
     var displayMap;
-    if(app && notes ) {
+    if(app && notes) {
       //Map over array to show the 3 notes 
+        console.log(`🦚`,notes)
       displayMap = (<div>
         <p>Job Title: {app.name} — Company Name: {app.company}</p>
         <form onSubmit={handleSubmit}>
@@ -65,13 +66,14 @@ function AppDetail(props) {
           <label>Informational Interview: <input type='checkbox' checked={informational}  onClick={e => setInformational(!informational)} name='informational' value={informational} /></label>
           <input type="submit" value="submit" name="submit"/>
         </form>
-        <p>Recruiter Conversation Notes: {notes[0].rec_convo}</p>
-        <p>Informational Conversation Notes: {notes[0].info_convo}</p>
-        <p>General Notes: {notes[0].comments}</p>
+        <p> Notes: </p>
+        <MappedNotes notes={notes} />
         <Link to={{ pathname: `/app/${app._id}/note`, token: props.location.token } }> Add Notes for Application </Link>
       </div>)
-    } else{
+    } else if( app ) {
+      console.log(`🐹`,notes)
       displayMap = (<div> 
+        <p>Job Title: {app.name} — Company Name: {app.company}</p>
         <p> <Link to={{ pathname: `/app/${app._id}/note`, token: props.location.token } }> Add Notes for Application </Link> </p>
         </div>)
     }

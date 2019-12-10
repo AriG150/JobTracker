@@ -9,10 +9,8 @@ import {
   BrowserRouter as Router, 
   Route,
   Link } from 'react-router-dom';
-import JobTracker from './JobTracker';
 import AppDetail from './AppDetail';
 import AddApp from './AddApp';
-import EditNote from './EditNote';
 import AddNote from './AddNote';
 
 
@@ -115,22 +113,15 @@ class App extends Component {
         <h1>Welcome to JobTrackers! </h1>
         <nav>
           <Link to='/'>Home Page</Link>{ ' | ' }
-          {/* <Link to='/JobTracker'>All Offers</Link>{ ' | ' } */}
-          {/* <Link to='/app/:id'>One Job Detail</Link>{ ' | ' } */}
           <Link to='/AddApp'>Add A New Job</Link>{ ' | ' }
-          {/* <Link to='/app/:id/note'>Add A Note To A Job</Link>{ ' | ' } */}
-          {/* <Link to='/EditNote'>Edit A Note</Link>{ ' | ' } */}
         </nav>
       </header>
       <div className="content-box">
         {navContents}
         <Route exact path='/' render={ (props) => <Homepage {...props} token={this.state.token} />  } />
-        {/* <Route exact path='/JobTracker' render={ () => <JobTracker token={this.state.token} />  } /> */}
         <Route exact path='/app/:id' component={AppDetail} />
         <Route exact path='/AddApp' render={ () => <AddApp token={this.state.token} />  } />
         <Route exact path='/app/:id/note' component={AddNote} />  } />
-        {/* <Route exact path='/AddNote' render={ () => <AddNote token={this.state.token} />  } /> */}
-        {/* <Route exact path='/EditNote' render={ () => <EditNote token={this.state.token} />  } /> */}
       </div>
     </div>
   </Router>
