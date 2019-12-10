@@ -38,14 +38,14 @@ function AddApp(props) {
         setInformational(false)
         setOffer([])
         setNote([])
-      })
+      }, [])
   }
 
   return (
     <div>
         <h1>Start your Application: </h1>
         <div className="form-id">
-          <form action="POST" onSubmit={handleSubmit} >
+          <form onSubmit={handleSubmit} >
             Job Title: <input value={name} onChange={e => setName(e.target.value)} type="text" name="title" /> <br />
             Company Name: <input value={company} onChange={e => setCompany(e.target.value)} type="text" name="company" /> <br />
             <input value={resume} onChange={e => setResume(e.target.resume)} type="hidden" name="resume"/>
