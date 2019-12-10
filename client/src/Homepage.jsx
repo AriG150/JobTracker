@@ -25,7 +25,12 @@ function Homepage(props) {
   if(apps.length){
     mappedApps = apps.map((app, id) => <div key={id}> Job Title: <Link to={{ pathname: `/app/${app._id}`, token: props.token }} >  {app.name} </Link> - Company Name: {app.company} </div>)
   } else {
-    mappedApps = <div> Start your job hunt! <Link to={'/AddApp'}> Add an Application </Link>  </div>
+    mappedApps = <div> 
+      <p> You haven't started any applications. </p>
+      <p> Start your job hunt!  </p>
+      <p> <Link to={'/AddApp'}> Add an Application </Link>   </p> 
+      
+      </div>
   }
 
   return (
