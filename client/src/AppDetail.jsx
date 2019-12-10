@@ -84,7 +84,6 @@ function AppDetail(props) {
         </div>)
     }
 
-
   return (
     <>
       {displayMap}

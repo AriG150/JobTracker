@@ -15,7 +15,7 @@ function AddNote(props) {
     }
   };
 
-  console.log(props)
+  console.log(props.location)
   const handleSubmit = (e) => {
     e.preventDefault()
     axios.post(`/api/apps/${props.match.params.id}/note`, {
@@ -31,7 +31,8 @@ function AddNote(props) {
       })
   }
     
-  if (redirect) { return <Redirect to={`/app/${props.match.params.id}`} /> }
+  // if (redirect) { return <Redirect to={`/app/${props.match.params.id}`} /> }
+  if (redirect) { return <Redirect to={`/profile`} /> }
   return (
     <>
       <h1>
