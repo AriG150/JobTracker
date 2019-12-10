@@ -72,7 +72,7 @@ function AppDetail(props) {
         <Link to={{ pathname: `/app/${app._id}/note`, token: props.location.token } }> Add Notes for Application </Link>
       </div>)
     } else{
-      console.log(`🐞`, props.location.token)
+      // console.log(`🐞`, props.location.token)
       displayMap = (<div> 
         <p> <Link to={{ pathname: `/app/${app._id}/note`, token: props.location.token } }> Add Notes for Application </Link> </p>
         </div>)
