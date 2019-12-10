@@ -22,7 +22,6 @@ function Profile(props) {
     
   var mappedApps;
   if(apps.length){
-    console.log(`🦜`, apps)
     mappedApps = apps.map((app, id) => 
     <div key={id}> 
     Job Title: <Link to={{ pathname: `/app/${app._id}`, token: props.token }} >  {app.name} </Link> - Company Name: {app.company}
