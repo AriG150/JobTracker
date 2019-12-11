@@ -62,9 +62,9 @@ function AppDetail(props) {
         <p>Job Title: {app.name} — Company Name: {app.company}</p>
         <form onSubmit={handleSubmit}>
           <label>Sent Resume: <input type='checkbox' checked={resume} onClick={e => setResume(!resume)} name='resume' value={resume} /></label><br /> 
-          <label>Sent Cover Letter(if required?): <input type='checkbox'  checked={coverLetter} onClick={e => setCoverLetter(!coverLetter)} name='coverLetter' value={coverLetter} /></label><br />
-          <label>Contacted Recruiter: <input type='checkbox' checked={recruiter} onClick={e => setRecruiter(!recruiter)} name='recruiter' value={recruiter} /></label><br />
-          <label>Informational Interview: <input type='checkbox' checked={informational}  onClick={e => setInformational(!informational)} name='informational' value={informational} /></label>
+          <label>Sent Cover Letter(if required?): <input type='checkbox'  checked={coverLetter} onClick={e => setCoverLetter(!coverLetter)} name='coverLetter' value={coverLetter} /></label> <br />
+          <label>Contacted Recruiter: <input type='checkbox' checked={recruiter} onClick={e => setRecruiter(!recruiter)} name='recruiter' value={recruiter} /></label> <br />
+          <label>Informational Interview: <input type='checkbox' checked={informational}  onClick={e => setInformational(!informational)} name='informational' value={informational} /></label> <br />
           <input type="submit" value="submit" name="submit"/>
         </form>
         <p> Notes: </p>
@@ -78,8 +78,8 @@ function AppDetail(props) {
         <form onSubmit={handleSubmit}>
           <label>Sent Resume: <input type='checkbox' checked={resume} onClick={e => setResume(!resume)} name='resume' value={resume} /></label><br /> 
           <label>Sent Cover Letter(if required?): <input type='checkbox'  checked={coverLetter} onClick={e => setCoverLetter(!coverLetter)} name='coverLetter' value={coverLetter} /></label><br />
-          <label>Contacted Recruiter: <input type='checkbox' checked={recruiter} onClick={e => setRecruiter(!recruiter)} name='recruiter' value={recruiter} /></label><br />
-          <label>Informational Interview: <input type='checkbox' checked={informational}  onClick={e => setInformational(!informational)} name='informational' value={informational} /></label>
+          <label>Contacted Recruiter: <input type='checkbox' checked={recruiter} onClick={e => setRecruiter(!recruiter)} name='recruiter' value={recruiter} /></label> <br />
+          <label>Informational Interview: <input type='checkbox' checked={informational}  onClick={e => setInformational(!informational)} name='informational' value={informational} /></label> <br />
           <input type="submit" value="submit" name="submit"/>
         </form>
         <p> <Link to={{ pathname: `/app/${app._id}/note`, token: props.location.token } }> Add Notes for Application </Link> </p>
