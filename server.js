@@ -5,11 +5,9 @@ const expressJWT = require('express-jwt');
 const helmet = require('helmet');
 
 const app = express();
-
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('static'))
+app.use(express.static(__dirname + '/client/build'));
 app.use(helmet());
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
