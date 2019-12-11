@@ -166,19 +166,19 @@ To address issues with Redirect, Documentation can be found at:
 To address issues with useState and useEffects hooks, we learned through MUCH trial and error.
 
 At our final Day, here is a brief tour of our App:
-THE WELCOME PAGE: [picture](img/WelcomePage.png)
+THE WELCOME PAGE: ![picture](./img/WelcomePage.png)
 
 ALL THE JOBS YOU WANT TO TRACK: 
-[picture](img/Jobs.png)
+![picture](./img/Jobs.png)
 
 WHAT BOXES CAN YOU CHECK OFF: 
-[picture](img/Tour.png)
+![picture](./img/Tour.png)
 
 EDIT THEM AS YOU DESIRE: 
-[picture](img/Checkboxes.png)
+![picture](./img/Checkboxes.png)
 
 WHAT NOTES WOULD YOU LIKE TO ADD: 
-[picture](img/Notes.png)
+![picture](./img/Notes.png)
 
 
 
