@@ -16,7 +16,6 @@ function Profile(props) {
         .then((res) => {
           setApps(res.data)
         })
-      console.log(`🐷`,config)
     }
   }, [props]);
     

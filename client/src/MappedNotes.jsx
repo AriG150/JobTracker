@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function MappedNotes(props) {
 
   const mappedNotes = props.notes.map((note, id) => (
@@ -12,7 +11,6 @@ function MappedNotes(props) {
     </div>
   ))
   
-
   return(
     <>
     {mappedNotes}

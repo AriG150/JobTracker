@@ -5,7 +5,6 @@ const User = require('../models/user');
 
 //POST /auth/signup
 router.post('/signup', (req, res) => {
-  console.log('in sign up route')
   //See if the email is already in the db 
   User.findOne({ email: req.body.email }, (err, user) => {
     //if yes, return error

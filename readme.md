@@ -79,10 +79,8 @@ router.post('/apps', (req, res) => {
       application.save((err, newApplication) => {
         // Push that application into the User.applications array
         user.applications.push(newApplication)
-        // console.log(`🐙`,user)
         user.save((err, updatedUser) => {
           res.json(updatedUser)
-          console.log(`🐸`, updatedUser)
         });
       });
     });
@@ -94,10 +92,8 @@ router.post('/apps', (req, res) => {
 ```
 // PUT /api/apps/:id - Edit unchecked/checked boxes for one app
 router.put('/apps/:aId', (req, res) => {
-  console.log('I"M HERE----------------------------------------------------------')
   Applications.findById(req.params.aId, (err, application) => {
     application.set(req.body);
-    console.log(`🐳`,application)
     application.save((err, newApp) => {
       res.json(newApp)
     })
@@ -111,7 +107,6 @@ router.put('/apps/:aId', (req, res) => {
 router.post('/apps/:id/note', (req, res) => {
   User.findById(req.user._id, (err, user) => {
     Applications.findById(req.params.id, (err, application) => {
-      console.log(application)
       //Create note
       note = {
         rec_convo: req.body.rec_convo,
@@ -135,7 +130,6 @@ router.post('/apps/:id/note', (req, res) => {
 router.put('/apps/:appId/note/:nId', (req, res) =>{
   Applications.findById(req.params.appId, (err, application) => {
     let note = application.notes.id(req.params.nId)
-    console.log(note)
     note.set({
       rec_convo: req.body.rec_convo,
       info_convo: req.body.info_convo,
@@ -151,9 +145,7 @@ router.put('/apps/:appId/note/:nId', (req, res) =>{
 ```
 // DELETE /api/apps/:id - delete one app
 router.delete('/apps/:aId', (req, res) => {
-  console.log(`We want to DESTROY A JOB`)
   Applications.findByIdAndDelete(req.params.aId, req.body, (err, application) => {
-    console.log(`Are you gone yet?`, application)
     res.json(application);
   })
 })
