@@ -3,7 +3,6 @@ import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
 function AddApp(props) {
-
   const [name, setName] = useState('')
   const [company, setCompany] = useState('')
   const [resume, setResume] = useState(false)

@@ -53,9 +53,11 @@ function AppDetail(props) {
       })
     }
 
+    //Conditional to change what is displayed depending on whether a user's application has any job notes
+    //TODO: currently there is an error when a user gets redirected from AddNote back to AppDetail. This is circumvented
+    // by sending back to their Profile page. 
     var displayMap;
     if(app && notes) {
-        console.log(`🐳`, notes)
       displayMap = (<div>
         <p>Job Title: {app.name} — Company Name: {app.company}</p>
         <form onSubmit={handleSubmit}>

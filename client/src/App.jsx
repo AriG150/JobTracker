@@ -78,7 +78,7 @@ class App extends Component {
     })
   }
 
-
+  //Navbar links dependent on whether user is logged in. 
   render () {   
     let navContents;
     if(this.state.user) {

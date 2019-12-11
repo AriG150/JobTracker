@@ -14,5 +14,4 @@ function WelcomeBody() {
   )
 }
 
-
 export default WelcomeBody;
