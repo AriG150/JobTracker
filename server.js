@@ -12,7 +12,6 @@ app.use(express.json());
 app.use(express.static('static'))
 app.use(helmet());
 
-
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection; 
 db.once('open', () => {
