@@ -35,12 +35,34 @@ And throughout the planning process, we trimmed the unnecessary routes and settl
 
 ## Development Log
 
-5-day timeframe from project launch to deployment. 
+* 5-day timeframe from project launch to deployment. 
 
 We spent first days planning. This included whiteboarding, developing schemas for Mongoose, deciding which elements of React we wanted to feature(hooks), and routing.  We worked together to compile the api server file as both developers understood the importance of finishing the backend. See photos above to observe the process.
 
-Pivot Day - Of most importance was getting the bearer token to pass through successfully into separate components, without it, we were struggling to gain quick traction on our React pages. Also, we implemented a string of Boolean conditions into the relationship models, rigged them with checkboxes so the user could toggle between checkmarks... This proved harder to implement than originally planned. It took some strategizing, refactoring, and consulting with other developers. Mission Accomplished however. With the completion of those bullets, we now sit at 80 % MVP
+* Pivot Day - Of most importance was getting the bearer token to pass through successfully into separate components, without it, we were struggling to gain quick traction on our React pages. Also, we implemented a string of Boolean conditions into the relationship models, rigged them with checkboxes so the user could toggle between checkmarks... This proved harder to implement than originally planned. It took some strategizing, refactoring, and consulting with other developers. Mission Accomplished however. With the completion of those bullets, we now sit at 80 % MVP
 
-# New Things to Learn
+* Final Day - Debugging, Troubleshooting, and Redirect Links have been fleshed out after rigorous state handling changes and route path adjustments were needed. Different background image that worked better than first iterations.
 
-# 
+# New Things Learned
+To address issues with the bearer token, we learned about props.location.token
+documentation support for this is found on:
+[https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/location.md]
+
+To address issues with Redirect, documentation can be found at:
+[https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Redirect.md]
+
+To address issues with useState and useEffects hooks, we learned through MUCH trial and error.
+
+At our final Day, here is a brief tour of our App:
+[picture](img/WelcomePage.png)
+[picture](img/Tour.png)
+[picture](img/Notes.png)
+[picture](img/Jobs.png)
+[picture](img/Checkboxes.png)
+
+
+
+# Acknowledgements
+Special thank you to:
+* Steve Peters - SEI Instructor
+* Sarah King - SEI Instructor
