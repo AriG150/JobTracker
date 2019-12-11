@@ -28,6 +28,11 @@ app.use('/locked',
         expressJWT({ secret: process.env.JWT_SECRET }).unless({ method: 'POST' }),
         require('./routes/locked'));
 
+//Heroku deployment
+app.get('*', (req, res) =>{
+  res.sendFile(__dirname + '/client/build/index.html')
+})
+
 app.listen( process.env.PORT, () => {
   console.log(` 🎧 You are listening on port ${process.env.PORT}`)
 });
