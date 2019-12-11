@@ -2,7 +2,7 @@ body {
   font-family: 'Baloo Bhai', cursive;
   margin: 0;
   /* margin-left: 25px; */
-  background-image: url('https://images.unsplash.com/photo-1464999833595-997c340befb4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');
+  background-image: url('./img/backgroundImage.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -23,6 +23,13 @@ li {
 
 .content-box, header, a, nav {
   text-align: center;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem; 
 }
 
 /* .header  {
