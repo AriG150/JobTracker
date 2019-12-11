@@ -85,6 +85,7 @@ class App extends Component {
       navContents = (
         <div className="nav-wrapper"> 
           <nav>
+            <h1>Welcome to JobTrackers! </h1>
             <Link to='/' onClick={this.logout}> Logout </Link> { ' | ' }
             <Link to='/profile'>Profile</Link>{ ' | ' }
             <Link to='/AddApp'>Add A New Job</Link>{ ' | ' }
@@ -95,6 +96,7 @@ class App extends Component {
       navContents = (
       <div className="nav-wrapper"> 
         <nav>
+          <h1>Welcome to JobTrackers! </h1>
           <Link to='/signup'> Signup </Link> { ' | ' }
           <Link to='/login'> Login </Link> { ' | ' }
         </nav>
@@ -104,7 +106,6 @@ class App extends Component {
   return (
     <Router>
       <div className="header">
-        <h1>Welcome to JobTrackers! </h1>
           {navContents}
         </div>
       {this.state.logout}
@@ -115,6 +116,7 @@ class App extends Component {
       <Route exact path='/app/:id' component={AppDetail} />
       <Route exact path='/AddApp' render={ () => <AddApp token={this.state.token} />  } />
       <Route exact path='/app/:id/note' component={AddNote}  />
+      <div className="spacer"></div>
       <footer className="footer">
         <span> Created By: </span>
         <a className="link" href="https://github.com/AriG150" target="_blank" rel="noopener noreferrer" > Ari </a> and
