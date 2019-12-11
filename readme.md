@@ -7,8 +7,8 @@ JobTrackers allows a job seeker to organize their job search in one convenient p
 
 ## Team Members
 
-* Ari Greif (Git Master)
-* Josh Hunter
+* Ari Greif (Git Master) ["https://github.com/AriG150"]
+* Josh Hunter ["https://github.com/hunterhanna2010"]
 
 ## Foundation
 
